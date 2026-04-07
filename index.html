@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Product Showcase</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f7f7f7;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 24px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin-bottom: 8px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 30px auto;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-content {
+      padding: 18px;
+    }
+
+    .product-content h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .product-content p {
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+      color: #4b5563;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #0f766e;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: opacity 0.2s ease;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .view-btn {
+      background: #2563eb;
+      color: white;
+    }
+
+    .buy-btn {
+      background: #16a34a;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #6b7280;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Our Products</h1>
+    <p>Browse our featured collection</p>
+  </header>
+
+  <main class="container">
+    <section class="products">
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" alt="Running Shoes">
+        <div class="product-content">
+          <h2>Running Shoes</h2>
+          <p>Lightweight and comfortable shoes designed for daily walking and running.</p>
+          <span class="price">$59.99</span>
+          <div class="btn-group">
+            <button class="view-btn" onclick="trackProduct('Running Shoes', 'View Details')">View Details</button>
+            <button class="buy-btn" onclick="trackProduct('Running Shoes', 'Buy Now')">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80" alt="Smartphone">
+        <div class="product-content">
+          <h2>Smartphone</h2>
+          <p>A sleek smartphone with a high-resolution camera and long battery life.</p>
+          <span class="price">$399.99</span>
+          <div class="btn-group">
+            <button class="view-btn" onclick="trackProduct('Smartphone', 'View Details')">View Details</button>
+            <button class="buy-btn" onclick="trackProduct('Smartphone', 'Buy Now')">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" alt="Headphones">
+        <div class="product-content">
+          <h2>Wireless Headphones</h2>
+          <p>Noise-cancelling headphones with premium sound and a modern design.</p>
+          <span class="price">$89.99</span>
+          <div class="btn-group">
+            <button class="view-btn" onclick="trackProduct('Wireless Headphones', 'View Details')">View Details</button>
+            <button class="buy-btn" onclick="trackProduct('Wireless Headphones', 'Buy Now')">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Watch">
+        <div class="product-content">
+          <h2>Smart Watch</h2>
+          <p>Track your fitness, notifications, and daily activity with this stylish watch.</p>
+          <span class="price">$129.99</span>
+          <div class="btn-group">
+            <button class="view-btn" onclick="trackProduct('Smart Watch', 'View Details')">View Details</button>
+            <button class="buy-btn" onclick="trackProduct('Smart Watch', 'Buy Now')">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 My Store. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function trackProduct(productName, action) {
+      // Send custom event to Clarity if available
+      if (window.clarity) {
+        clarity("event", action + " - " + productName);
+      }
+
+      alert(action + " clicked for " + productName);
+    }
+  </script>
+
+</body>
+</html>
